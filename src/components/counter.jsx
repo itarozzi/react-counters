@@ -2,15 +2,15 @@ import React, { Component } from 'react';
  
 
 class Counter extends Component {
-    state = {
-        value : this.props.counter.value,
-        tags: ['tag1', 'tag2', 'tag3'],
-        imageUrl: "https://picsum.photos/200",   // random image 200x200px
-        product: {id:100, name:"car"},
-        address: {
-            street:''
-        }
-    }
+    // state = {
+    //     value : this.props.counter.value,
+    //     tags: ['tag1', 'tag2', 'tag3'],
+    //     imageUrl: "https://picsum.photos/200",   // random image 200x200px
+    //     product: {id:100, name:"car"},
+    //     address: {
+    //         street:''
+    //     }
+    // }
 
     styles = {
         fontSize : 15,
