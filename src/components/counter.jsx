@@ -41,26 +41,27 @@ class Counter extends Component {
     */
 
 
-    handleIncrement = () => {
+    // handleIncrement = () => {
 
-        //NOTE : sintassi davvero astrusa!
+    //     //NOTE : sintassi davvero astrusa!
 
-        // Qui non ho accesso a this !!!!
-        console.log("Increment clicked", this)
+    //     // Qui non ho accesso a this !!!!
+    //     console.log("Increment clicked", this)
 
-        // NOTE: non posso incrementare direttamente, devo usare setState :(
-        // this.state.count++;  
+    //     // NOTE: non posso incrementare direttamente, devo usare setState :(
+    //     // this.state.count++;  
 
-        this.setState( { value: this.state.value+1});  
+    //     this.setState( { value: this.state.value+1});  
 
-    }
+    // }
 
 
+    /* ora incremento nel contenitore */
     // handler con parametro, che pero' deve essere usato in maniera particolare nel render
-    handleIncrementWithParam = product => {
-        console.log("Increment clicked", product)
-        this.setState( { value: this.state.value+1});  
-    }
+    // handleIncrementWithParam = product => {
+    //     console.log("Increment clicked", product)
+    //     this.setState( { value: this.state.value+1});  
+    // }
 
 
     render() { 
@@ -71,6 +72,9 @@ class Counter extends Component {
         // restituire sempre un elemento altrimenti babel non sa quale generare
         return ( 
         <div>
+
+            
+
             {/* NOTE: anche qui non proprio immediata - passo il titolo come children dell'oggetto*/}
             {this.props.children}
 
@@ -86,7 +90,9 @@ class Counter extends Component {
             {/* <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm"> Increment</button> */}
 
              {/* NOTE: altra sintassi davvero strana per poter chiamare funzioni con parametri  */}
-            <button onClick={() => this.handleIncrementWithParam(this.state.product)}
+
+             {/* NOTE: non incremento il counter direttamente qui, perche' non verrebbe aggiornato, ma lo faccio nel contenitore */}
+            <button onClick={() => this.props.onIncrement(this.props.counter)}
              className="btn btn-secondary btn-sm"> 
                 Increment
             </button>
@@ -106,7 +112,7 @@ class Counter extends Component {
 
     getBadgeClass() {
         let classes = "badge m-2 badge-";
-        classes += this.state.value === 0 ? "warning" : "primary";
+        classes += this.props.counter.value === 0 ? "warning" : "primary";
         return classes;
     }
 
@@ -115,7 +121,7 @@ class Counter extends Component {
         // oppure:
 
         
-        const {value: count} = this.state;
+        const {value: count} = this.props.counter;
         
         // Posso anche usare html dentro al js:
         //return count === 0 ? <h2>Zero</h2> : count;
