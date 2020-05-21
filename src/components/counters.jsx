@@ -4,7 +4,13 @@ import Counter from './counter'
 class Counters extends Component {
 
     render() { 
-        return (
+
+    // Destructuring arguments
+    //NOTE: ecco un modo per migliorare la pulizia del codice, senza ripetere sempre props.
+
+    const {onReset, onIncrement, onDelete, counters} = this.props;
+
+    return (
             <div>
                 <button 
                     onClick={this.props.onReset}
